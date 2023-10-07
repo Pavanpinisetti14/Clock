@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .clock{
+            width:30em;
+            height: 30em;
+            /*background-color: tomato;*/
+            position:absolute;
+            left:25em;
+            top:5em;
+        }
+        .ClockOuter{
+            width:30em;
+            height: 30em;
+            border-radius: 20em;
+            /* background-color: aqua; */
+            border :35px solid silver;
+        }
+        .twelve{
+            position:relative;
+            left: 220px;
+        }
+        .six{
+            position:relative;
+            top: 280px;
+            left: 230px;
+        }
+        .three{
+            position:relative;
+            top: 4em;
+            left: 13.5em;
+        }
+        .nine{
+            position:relative;
+            left: 20px;
+            top: 10px;
+        }
+        #hours{
+            width: 6px;
+            height: 18em;
+            background-color: transparent;
+            position: absolute;
+            top: 8em;
+            left: 17em;
+        }
+        .h-temp{
+            height: 9em;
+            width: 6px;
+            background-color: black;
+        }
+        #min{
+            height: 20em;
+            width: 6px;
+            background-color: transparent;
+            position: absolute;
+            top: 7em;
+            left: 17em;
+        }
+        .m-temp{
+            height: 10em;
+            width: 6px;
+            background-color: lightskyblue;
+        }
+        #sec{
+            width: 6px;
+            height: 22em;
+            background-color: transparent;
+            position: absolute;
+            top: 6em;
+            left: 17em;
+        }
+        .s-temp{
+            width: 6px;
+            height: 11em;
+            background-color: gold;
+        }
+        .clockcen{
+            width:25px;
+            height: 25px;
+            border-radius:12.5px;
+            background-color: silver;
+            position: absolute;
+            top: 16em;
+            left:16.3em
+
+
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="ClockOuter">
+            <!-- <div class="clocknum">
+                <h1 class="twelve">12</h1>
+                <h1 class="three">3</h1>
+                <h1 class="six">6</h1>
+                <h1 class="nine">9</h1>
+            </div> -->
+            <div id="hours"><div class="h-temp"></div></div>
+            <div id="min"><div class="m-temp"></div></div>
+            <div id="sec"><div class="s-temp"></div></div>
+            <div class="clockcen">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        let hour = document.getElementById("hours");
+        let min = document.getElementById("min");
+        let sec = document.getElementById("sec");
+
+        let hr,min1,sec1,hr_rot,min_rot,sec_rot;
+        
+        setInterval(()=>{
+            d = new Date(),
+            hr = d.getHours()
+            min1 = d.getMinutes()
+            sec1 = d.getSeconds()
+            // console.log("SysTime ",d);
+            // console.log("Mintue ",min1);
+            // console.log("Hour ",hr);
+            // console.log("Seconds ",sec1);
+
+            hr_rot = 30 * hr + min1 / 2; 
+            min_rot = 6 * min1;
+            sec_rot = 6 * sec1;
+
+            sec.style.trransition = `1s`;
+            sec.style.transform = `rotate(${sec_rot}deg)`;
+
+            min.style.trransition = `1s`;
+            min.style.transform = `rotate(${min_rot}deg)`;
+
+            hour.style.trransition = `1s`;
+            hour.style.transform = `rotate(${hr_rot}deg)`;
+
+        },1000)
+    </script>
+</body>
+</html>
